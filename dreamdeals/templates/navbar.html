@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {   
+            background-color: #333;
+            padding: 10px 0;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .navbar ul li:last-child {
+            margin-right: 0;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .navbar ul li a:hover {
+            background-color: #555;
+        }
+        .navbar button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            outline: none;
+        }
+        .navbar button:hover {
+            background-color: #555;
+        }
+        .logout-btn {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="navbar-style" onclick="location.href='{% url 'category_list' %}'">Categories</button>
+        <button class="navbar-style" onclick="location.href='{% url 'product_list' %}'">Products</button>
+        {% if is_authenticated %}
+            <button class="logout-btn" onclick="location.href='{% url 'logout' %}'">Logout</button>
+        {% else %}
+            <button class="logout-btn" onclick="location.href='{% url 'login' %}'">Login</button>
+        {% endif %}
+    </div>
+</body>
+</html>

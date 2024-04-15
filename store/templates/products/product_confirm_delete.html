@@ -1,0 +1,74 @@
+{% include '../navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: center;
+        }
+        button[type="submit"] {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+        a {
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+            background-color: #3498db;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Product</h1>
+        <p>Are you sure you want to delete "{{ product.name }}"?</p>
+        <form action="{% url 'product_delete' product.pk %}" method="post">
+            {% csrf_token %}
+            <a href="{% url 'product_list' %}">Cancel</a>
+            <button style="background-color: red;" type="submit">Delete</button>
+        </form>
+    </div>
+</body>
+</html>
